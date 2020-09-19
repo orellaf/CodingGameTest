@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="HTmlTagWeight" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-09-18T21:18:48" hostname="DESKTOP-F263QHS" time="4.636">
+  <properties/>
+  <testcase name="must be a()" classname="HTmlTagWeight" time="2.266"/>
+  <testcase name="must be p()" classname="HTmlTagWeight" time="0.817"/>
+  <testcase name="must be x()" classname="HTmlTagWeight" time="1.552"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
