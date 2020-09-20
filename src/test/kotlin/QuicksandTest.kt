@@ -57,61 +57,20 @@ class QuicksandTest {
 
 
                 var list = mutableListOf<Int>()
-                // test horizontal top
-                var countLeft = 0
-                loop@ for (i in (col - 1) downTo 0) {
-                    val case = fieldMap.get(row to i)
-                    if (sand.equals(case)) {
-                        countLeft++
-                    } else {
-                        countLeft++
-                        break@loop
+                var index = 1
+                while (list.isEmpty()) {
+                    for (r in row - index until row + index) {
+                        for (c in col - index until col + index) {
+                            if (c == col && row == r) continue
+                            val otherCase = fieldMap.get(r to c)
+                            if (ground.equals(otherCase)) {
+                                val nbMovement = Math.abs(r - row) + Math.abs(c - col)
+                                list.add(nbMovement)
+                            }
+                        }
                     }
+                    index++
                 }
-                list.add(countLeft)
-                // test horizontal bottom
-                var countRight = 0
-                loop@ for (i in (col + 1)..nbColumns) {
-                    val case = fieldMap.get(row to i)
-                    if (sand.equals(case)) {
-                        countRight++
-                    } else {
-                        countRight++
-                        break@loop
-                    }
-                }
-                list.add(countRight)
-                // test vertical left
-                var countTop = 0
-                loop@ for (i in (row - 1) downTo 0) {
-                    val case = fieldMap.get(i to col)
-                    if (sand.equals(case)) {
-                        countTop++
-                    } else {
-                        countTop++
-                        break@loop
-                    }
-                }
-                list.add(countTop)
-                // test vertical right
-                var countBottom = 0
-                loop@ for (i in (row + 1)..nbRows) {
-                    val case = fieldMap.get(i to col)
-                    if (sand.equals(case)) {
-                        countBottom++
-                    } else {
-                        countBottom++
-                        break@loop
-                    }
-                }
-                list.add(countBottom)
-
-
-
-                println(
-                    "row= ${casePosition.first}, column= ${casePosition.second} => T= $countTop," +
-                            " B= $countBottom,R= $countRight, L= $countLeft"
-                )
 
 
                 caseAndNbMovement.put(casePosition, list)
