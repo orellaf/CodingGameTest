@@ -59,14 +59,19 @@ class QuicksandTest {
                 var list = mutableListOf<Int>()
                 var index = 1
                 while (list.isEmpty()) {
-                    for (r in row - index until row + index) {
-                        for (c in col - index until col + index) {
-                            if (c == col && row == r) continue
-                            val otherCase = fieldMap.get(r to c)
-                            if (ground.equals(otherCase)) {
-                                val nbMovement = Math.abs(r - row) + Math.abs(c - col)
-                                list.add(nbMovement)
+                    for (r in row - index..row + index) {
+                        for (c in col - index..col + index) {
+                            // ok for the first and last line else just for the first and last column for the other line
+                            if (r == row - index || r == row + index || c == col - index || c == col + index) {
+                                println("check case row= $r, col= $c")
+                                val otherCase = fieldMap.get(r to c)
+                                if (ground.equals(otherCase)) {
+                                    val nbMovement = Math.abs(r - row) + Math.abs(c - col)
+                                    list.add(nbMovement)
+                                }
                             }
+
+
                         }
                     }
                     index++
